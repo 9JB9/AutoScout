@@ -1,0 +1,3 @@
+# Environment files may contain secrets and must remain local.
+.env
+**/.env
