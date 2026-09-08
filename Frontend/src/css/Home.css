@@ -1,0 +1,112 @@
+.home-content {
+    display: flex;
+    flex-direction: column;
+    border-radius: var(--border-radius-size);
+    width: 95vw;
+}
+
+.home-hero::before {
+    content: "";
+    background-image: url("../assets/heroimg.jpeg");
+    position: absolute;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    filter: brightness(0.4);
+    z-index: -1;
+}
+
+.home-hero {
+    height: calc(100vh - 10vh - 2em);
+    border-radius: var(--border-radius-size);
+    position: relative;
+    overflow: hidden;
+}
+
+.home-hero-info {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+}
+
+.home-hero-info h2 {
+    color: var(--color-blue-light);
+    font-size: 4rem;
+}
+
+.home-hero-info p {
+    color: var(--color-blue-light);
+    font-size: 2rem;
+}
+
+.home-info{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-block: 1em;
+    justify-items: center;
+    gap: 4em;
+}
+
+.home-info-content {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    min-height: 600px;
+    width: 100%;
+    border-radius: var(--border-radius-size);
+    padding-inline: 4em;
+    padding-block: 2em;
+    justify-content: space-between;
+
+}
+
+.home-info-content h3 {
+    font-size: 3vw;
+    height: 10%;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.home-info-content p {
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: 1.5vw;
+}
+
+.home-info-content p a {
+    padding: 5px 10px;
+    background-color: var(--color-surface);
+    color: var(--color-navy);
+    border: 2px solid transparent;
+    transition: all 0.15s ease-in-out 0.15s;
+    border-radius: var(--border-radius-size);
+}
+
+.home-info-content p a:hover {
+    color: var(--color-surface);
+    background-color: var(--color-navy);
+    border-color: var(--color-surface);
+}
+
+.home-info-content div{
+    height: 65%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.home-info-content:first-child {
+    background-color: var(--color-blue-light); 
+    color: var(--color-text);
+}
+
+.home-info-content:last-child {
+    background-color: var(--color-navy);
+    color: var(--color-blue-light);
+}

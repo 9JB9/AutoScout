@@ -7,6 +7,12 @@ from fastapi.middleware.cors import CORSMiddleware
 import os
 from dotenv import load_dotenv
 
+# external API related imports
+import httpx
+
+# schema related imports
+from .schemas import Listings, Listing, ListingMedia, ListingResponse, Build, Dealer
+
 load_dotenv()
 app = FastAPI()
 
@@ -36,12 +42,13 @@ they can aso be used together... if path identifies a collection of things, you 
 the query parameters filter that collection down
 """
 
-@app.get('/api/listings/') 
-async def get_cars(
+@app.get('/api/listings', response_model=ListingResponse) 
+async def get_listings(
     zip: str | None = None, # this just says that postal code can be either string or None, but either way the default value is None
     radius: int | None = None, # for these None values, we will do some error handling some day 
     make: str | None = None,
-    model: str | None = None
+    model: str | None = None,
+    country: str | None = None # if i do live tracking, this won't be needed, but let's keep it for now
 ):
     base_url = os.getenv("BASE_URL")
     api_key = os.getenv("API_KEY")
@@ -49,5 +56,19 @@ async def get_cars(
 
     # for now we are going to work assuming all parameters are filled... error handling can be done later.. and some of it
     # can be layered in the front end also... also SCHEMAS
-    api_url = api_key + 'search/car/active'
-    pass
+    api_url = base_url + 'search/car/active'
+
+    params = {
+        "zip": zip,
+        "radius": radius,
+        "make": make,
+        "model": model,
+        "api_key": api_key,
+        "country": country
+    }
+
+    async with httpx.AsyncClient() as client: 
+        response = await client.get(api_url, params=params) # god bless python scope... this exists outside of this with block once ready
+        listings = response.json()
+    
+    return {'listings': listings}

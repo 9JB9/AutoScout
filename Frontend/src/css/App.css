@@ -1,0 +1,34 @@
+:root {
+    /* Backgrounds */
+    --color-background: #f5f7fa;
+    --color-surface: #ffffff;
+
+    /* Brand */
+    --color-navy: #0b1f3a;
+    --color-navy-dark: #071426;
+    --color-blue: #1e4e8c;
+    --color-blue-light: #dce9f7;
+
+    /* Text */
+    --color-text: #172033;
+    --color-text-muted: #64748b;
+
+    /* UI */
+    --color-border: #d9e0e8;
+
+    /* Status */
+    --color-success: #16803c;
+
+    /* border-radius */
+    --border-radius-size: 4em;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+}
